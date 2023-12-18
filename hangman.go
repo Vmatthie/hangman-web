@@ -38,18 +38,18 @@ func main() {
 			fmt.Printf("    Current Score\n")
 			fmt.Printf("  %d: wins, %d: loses\n", wins, loses)
 			fmt.Printf("------------------------\n")
-			again, has_won = play_hangman(numletters)
+			again, has_won = Play_hangman(numletters)
 		} else if again == "n" {
 			break
 		}
 	}
 }
 
-func init() {
+func Init() {
 	rand.Seed(time.Now().UnixNano())
 }
 
-func play_hangman(numletters int) (playagain string, is_winner bool) {
+func Play_hangman(numletters int) (playagain string, is_winner bool) {
 	stage_of_death := 0
 	var updateddashes string
 	gamemode := 0
@@ -232,7 +232,7 @@ for _, letter := range guessedLetters {
 		}
 	}
 }
-func draw_hangman(stage_of_death int) {
+func Draw_hangman(stage_of_death int) {
 	switch stage_of_death {
 	case 0:
 		fmt.Printf("  +---+\n")
@@ -356,7 +356,7 @@ func draw_hangman(stage_of_death int) {
 		fmt.Printf("========\n")
 	}
 }
-func hideword(word string) string {
+func Hideword(word string) string {
 	dashes := ""
 	for i, letter := range word {
 		if i < len(word)/2-1 {
@@ -368,7 +368,7 @@ func hideword(word string) string {
 	return dashes
 }
 
-func revealdashes(word string, guess string, dashes string) (string, bool) {
+func Revealdashes(word string, guess string, dashes string) (string, bool) {
     newdashes := ""
 	for i, r := range dashes {
         if c := string(r); c != "_" {
@@ -385,7 +385,7 @@ func revealdashes(word string, guess string, dashes string) (string, bool) {
     return newdashes, newdashes == word
 }
 
-func random_word(numletters int, gamemode int) string {
+func Random_word(numletters int, gamemode int) string {
 	switch gamemode { 
 	case 1:
 		var dataletters []byte
@@ -422,7 +422,7 @@ func random_word(numletters int, gamemode int) string {
 	}
 	return "omgthisisabugyoushouldntseethisever"
 }
-func clearscreen() {
+func Clearscreen() {
 	if runtime.GOOS != "windows" {
 		cmd := exec.Command("clear")
 		cmd.Stdout = os.Stdout
