@@ -1,4 +1,4 @@
-package hangmanweb
+package hangman-web
 
 import (
 	"fmt"
